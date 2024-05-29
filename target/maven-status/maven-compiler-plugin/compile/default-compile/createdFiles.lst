@@ -1,0 +1,4 @@
+Models\Anuncio.class
+Models\Usuario.class
+Models\ControlReportes.class
+Models\Cuenta.class
