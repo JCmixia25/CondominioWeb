@@ -157,18 +157,18 @@
                     </div>
                 </div>
                 <div  class="content">
-                    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="anuncio" value="#{bkn_inicio}"
-                                 reflow="true" styleClass="products-table" selection="#{bkn_inicio}"
+                    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="anuncio" value="#{bkn_Admin.listaAnuncios}"
+                                 reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaAnuncios}"
                                  editable="true">
 
                         <p:column headerText="DESCRIPCION" sortBy="" filterBy="">
-                            <h:outputText value="valor"/>
+                        <h:outputText value="#{anuncio.descripcion}"/>
                         </p:column>
                         <p:column headerText="PUBLICACION" sortBy="" filterBy="">
-                            <h:outputText value="valor"/>
+                            <h:outputText value="#{anuncio.fecha_publicacion}"/>
                         </p:column>
                         <p:column headerText="VENCIMIENTO" sortBy="" filterBy="">
-                            <h:outputText value="valor"/>
+                            <h:outputText value="#{anuncio.fecha_vencimiento}"/>
                         </p:column>
                     </p:dataTable>
                 </div>

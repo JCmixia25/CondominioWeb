@@ -7,10 +7,7 @@ package Models;
 import java.io.Serializable;
 import java.sql.Blob;
 
-/**
- *
- * @author CompuFire
- */
+
 public class Anuncio implements Serializable {
 
     private Long id_anuncio;
