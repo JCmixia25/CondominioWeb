@@ -133,10 +133,10 @@
                 <h:form>
                     <p:menu>
                         <p:menuitem value="Pagos" actionListener="#{bkn_direccion.pasarelaPagos()}" />
-                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}" />
+                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.reportesclientes()}" />
                         <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}" />
-                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.estadoCuenta()}" />
-                        <p:menuitem value="Mensajes" url="#" />
+                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.cuentacliente()}" />
+                        <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioCliente()}"/>
                         <p:menuitem value="Eventos" url="#" />
                         <p:menuitem value="Reservas" url="#" />
                     </p:menu>
@@ -147,7 +147,7 @@
                     <div class="logo">
                         <p:graphicImage value="/resources/img/Condominio.png" style="width: 100px; height: 80px;" />
                     </div>
-                     <!-- Menú para seleccionar el tipo de pago -->
+                    <!-- Menú para seleccionar el tipo de pago -->
                     <p:selectOneMenu id="tipoPago1" required="true" label="Tipo de Pago">
                         <f:selectItem itemLabel="Seleccione el tipo de pago" itemValue="" />
                         <f:selectItem itemLabel="Mensualidad de Lote" itemValue="Mensualidad de Lote" />
@@ -171,21 +171,21 @@
                 <div  class="content">
                     <h1>PAGOS</h1>
                     <div class="background">
-                <div class="form-container">
-                    <div class="form-header">
-                      <div class="title">Llenar formulario</div>
-                    </div>
+                        <div class="form-container">
+                            <div class="form-header">
+                                <div class="title">Llenar formulario</div>
+                            </div>
 
-                    <!-- Formulario para realizar pagos -->
-                    <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" />
-                    <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" />
-                    <p:inputText id="txtCvv" placeholder="CVV" required="true" label="CVV" style="width: 100%;" />
-                    <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" />
-                    
-                    <!-- Botón para realizar el pago -->
-                    <p:commandButton value="Realizar Pago" style="width: 100%;" />
-                </div>
-            </div>
+                            <!-- Formulario para realizar pagos -->
+                            <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" />
+                            <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" />
+                            <p:inputText id="txtCvv" placeholder="CVV" required="true" label="CVV" style="width: 100%;" />
+                            <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" />
+
+                            <!-- Botón para realizar el pago -->
+                            <p:commandButton value="Realizar Pago" style="width: 100%;" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
