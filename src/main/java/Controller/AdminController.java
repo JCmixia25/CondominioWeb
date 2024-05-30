@@ -5,13 +5,14 @@
 package Controller;
 
 import DAO.ConsultasAdmin;
-import DAO.ConsultasDAO;
+import DAO.ConsultasManto;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 
 import Models.Anuncio;
 import Models.ControlReportes;
 import Models.Cuenta;
+import Models.Propiedad;
 import Models.RegistroPropiedad;
 import java.util.List;
 import javax.annotation.PostConstruct;
