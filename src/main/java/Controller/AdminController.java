@@ -104,6 +104,10 @@ public class AdminController implements Serializable {
             System.out.println("Error al listar propiedades");
         }
     }
+    
+    public void buscar(){
+        
+    }
 
     /**
      * @return the listaPropiedades
