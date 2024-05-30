@@ -192,9 +192,10 @@ public class ConsultasAdmin {
                 datos.setHabitaciones(r.getInt("habitacion"));
                 datos.setBaños(r.getInt("baños"));
                 propiedades.add(datos);
+                System.out.println("PROPIEADES: "+query);
             }
         } catch (Exception e) {
-            System.out.println("Error al consultar propiedades");
+            System.out.println("Error al consultar propiedades: "+query);
         } finally {
             if (con != null) {
                 try {
