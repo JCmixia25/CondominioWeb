@@ -14,14 +14,14 @@ public class Propiedad implements Serializable {
 
     private Long id_propiedad;
     private String direccion;
-    private Long tipo_propiedad;
+    private String tipo_propiedad;
     private float precio;
     private String area;
     private String descripcion;
     private int habitaciones;
     private int baños;
 
-    public Propiedad(Long id_propiedad, String direccion, Long tipo_propiedad, float precio, String area, String descripcion, int habitaciones, int baños) {
+    public Propiedad(Long id_propiedad, String direccion, String tipo_propiedad, float precio, String area, String descripcion, int habitaciones, int baños) {
         this.id_propiedad = id_propiedad;
         this.direccion = direccion;
         this.tipo_propiedad = tipo_propiedad;
@@ -67,14 +67,14 @@ public class Propiedad implements Serializable {
     /**
      * @return the tipo_propiedad
      */
-    public Long getTipo_propiedad() {
+    public String getTipo_propiedad() {
         return tipo_propiedad;
     }
 
     /**
      * @param tipo_propiedad the tipo_propiedad to set
      */
-    public void setTipo_propiedad(Long tipo_propiedad) {
+    public void setTipo_propiedad(String tipo_propiedad) {
         this.tipo_propiedad = tipo_propiedad;
     }
 
