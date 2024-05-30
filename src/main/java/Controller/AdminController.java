@@ -5,7 +5,7 @@
 package Controller;
 
 import DAO.ConsultasAdmin;
-import DAO.ConsultasDAO;
+import DAO.ConsultasManto;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 
@@ -13,16 +13,11 @@ import Models.Anuncio;
 import java.util.List;
 import javax.annotation.PostConstruct;
 
-/**
- *
- * @author CompuFire
- */
+
 @ManagedBean(name = "bkn_Admin")
 public class AdminController implements Serializable {
 
     private List<Anuncio> listaAnuncios;
-    
-    
 
     @PostConstruct
     public void init() {

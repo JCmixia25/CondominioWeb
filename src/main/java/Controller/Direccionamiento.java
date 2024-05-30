@@ -15,15 +15,11 @@ import javax.inject.Named;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author CompuFire actionListener="#{bkn_direccion.inicioAdmin}"
- */
 
 @ManagedBean(name = "bkn_direccion")
 public class Direccionamiento implements Serializable {
         
-        private String puerto = "8089";
+        private String puerto = "8080";
 
          public void inicioLogin() {
 
@@ -214,7 +210,7 @@ public class Direccionamiento implements Serializable {
 
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
-            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/mano/Anuncios.xhtml"); // Reemplaza esta URL con la que desees abrir.
+            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/manto/Anuncios.xhtml"); // Reemplaza esta URL con la que desees abrir.
         } catch (IOException ex) {
             Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
         }

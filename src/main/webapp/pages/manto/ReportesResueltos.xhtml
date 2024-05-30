@@ -155,8 +155,8 @@
 
         <h2 style="text-align: center;">REPORTES RESUELTOS</h2>
 <h:form id="consultaForm">         
-    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="reporte" value="#{bkn_inicio.listaReportesFiltrados}"
-                 reflow="true" styleClass="products-table" selection="#{bkn_inicio.listaReportesFiltrados}"
+    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="reporte" value="#{bkn_manto.listaReportesFiltrados}"
+                 reflow="true" styleClass="products-table" selection="#{bkn_manto.listaReportesFiltrados}"
                  editable="true">
         <p:column headerText="ID_REPORTE" sortBy="" filterBy="">       
             <h:outputText value="#{reporte.id_reporte}"/>
