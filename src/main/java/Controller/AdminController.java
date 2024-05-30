@@ -29,8 +29,10 @@ public class AdminController implements Serializable {
     private List<Cuenta> listaCuentas;
     //Reportes
     private List<ControlReportes> listaReportes;
-    //Propiedades
+    //Control Propiedades
     private List<RegistroPropiedad> listaRegistro;
+    //Propiedades
+    private List<Propiedad> listaPropiedades;
 
     @PostConstruct
     public void init() {
@@ -38,6 +40,7 @@ public class AdminController implements Serializable {
         listarAnuncios();
         listarCuentas();
         listarReportes();
+        listarRegistros();
 
     }
 
