@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import Models.Anuncio;
 import Models.ControlReportes;
 import Models.Cuenta;
+import Models.Propiedad;
 import Models.RegistroPropiedad;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -90,6 +91,30 @@ public class AdminController implements Serializable {
             System.out.println("Error al listar registros");
         }
 
+    }
+
+    public void listarPropiedades() {
+        ConsultasAdmin consulta = new ConsultasAdmin();
+
+        try {
+            setListaPropiedades(consulta.consultarPropiedades());
+        } catch (Exception e) {
+            System.out.println("Error al listar registros");
+        }
+    }
+
+    /**
+     * @return the listaPropiedades
+     */
+    public List<Propiedad> getListaPropiedades() {
+        return listaPropiedades;
+    }
+
+    /**
+     * @param listaPropiedades the listaPropiedades to set
+     */
+    public void setListaPropiedades(List<Propiedad> listaPropiedades) {
+        this.listaPropiedades = listaPropiedades;
     }
 
     /**
