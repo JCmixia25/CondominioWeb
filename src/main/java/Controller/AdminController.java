@@ -17,6 +17,12 @@ import Models.RegistroPropiedad;
 import java.util.List;
 import javax.annotation.PostConstruct;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author CompuFire
@@ -55,7 +61,38 @@ public class AdminController implements Serializable {
         } catch (Exception e) {
             System.out.println("Error al listar anuncios");
         }
+        
+        filtrarAnuncios();
 
+    }
+
+    public void filtrarAnuncios() {
+        String fecha_publicacion;
+        String fecha_actual;
+        String formato = "dd-MM-yyyy";
+
+        DateTimeFormatter formateo = DateTimeFormatter.ofPattern(formato);
+
+        for (Anuncio anuncio : listaAnuncios) {
+
+            fecha_publicacion = anuncio.getFecha_publicacion();
+
+            Date fechaActual = new Date();
+            SimpleDateFormat formatear = new SimpleDateFormat(formato);
+            fecha_actual = formatear.format(fechaActual);
+
+            try {
+                LocalDate fechaP = LocalDate.parse(fecha_publicacion, formateo);
+                LocalDate fechaA = LocalDate.parse(fecha_actual, formateo);
+                System.out.println("Las fechas son: "+fechaP+"---"+fechaA);
+            } catch (DateTimeParseException e) {
+                e.printStackTrace();
+            }
+
+//            if (anuncio.getFecha_publicacion()) {
+//
+//            }
+        }
     }
 
     public void listarCuentas() {
@@ -99,14 +136,14 @@ public class AdminController implements Serializable {
 
         try {
             setListaPropiedades(consulta.consultarPropiedades());
-            System.out.println("LISTA PROPIEDADES: "+listaPropiedades.size());
+            System.out.println("LISTA PROPIEDADES: " + listaPropiedades.size());
         } catch (Exception e) {
             System.out.println("Error al listar propiedades");
         }
     }
-    
-    public void buscar(){
-        
+
+    public void buscar() {
+
     }
 
     /**

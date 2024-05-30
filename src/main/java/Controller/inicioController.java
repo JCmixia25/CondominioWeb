@@ -17,11 +17,8 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "bkn_inicio")
 
-
-    
 public class inicioController implements Serializable {
 
-    
     //Usuarios
     private Long id_usuario;
     private Long persona_id;
@@ -43,19 +40,16 @@ public class inicioController implements Serializable {
     private String estado_reporte;
     private String fecha_cierre;
     private String fecha_creacion;
-    private List<Reporte>listaReportes;
-    
+    private List<Reporte> listaReportes;
+
     private List<Reporte> listaReportesManto2;
-            
-   
-   
-/*     private List<ControlReportes> listaReportesFiltrados;
+
+    /*     private List<ControlReportes> listaReportesFiltrados;
     private List<ControlReportes> listaReportesFiltrados2;
     // Filtro de Usuario Asignado ID de Mantenimiento 
     private List<ControlReportes> listaReportesManto;
     private List<ControlReportes> listaReportesManto2;
-  */ 
-   
+     */
     public void listarUsuarios() {
 
         ConsultasDAO consulta = new ConsultasDAO();
@@ -68,7 +62,7 @@ public class inicioController implements Serializable {
         }
 
     }
-    
+
     public void listarReportes() {
 
         ConsultasDAO consultaa = new ConsultasDAO();
@@ -82,19 +76,14 @@ public class inicioController implements Serializable {
 
     }
 
-
     @PostConstruct
     public void init() {
         // Puedes inicializar algún dato aquí si es necesario
         listarUsuarios();
 //       cargarUsuarios();
 
-         listarReportes();
-
-
+        listarReportes();
     }
-    
-
 
     public void validarUsuario() throws Exception {
 
@@ -116,34 +105,33 @@ public class inicioController implements Serializable {
 
             if (usuario.getNombre_usuario().compareTo(nombre_usuario) == 0 && usuario.getContraseña().compareTo(contraseña) == 0) {
                 System.out.println("Usuario correcto");
-                
+
                 nombre_usuario = "";
                 contraseña = "";
                 mensaje = "";
-                
-                if(usuario.getRol_id()==1){
+
+                if (usuario.getRol_id() == 1) {
                     direccion.inicioAdmin();
-                }else if(usuario.getRol_id()==2){
+                } else if (usuario.getRol_id() == 2) {
                     direccion.inicioManto();
-                }else if(usuario.getRol_id()==3){
+                } else if (usuario.getRol_id() == 3) {
                     direccion.inicioCliente();
-                 } else if (usuario.getRol_id() == 4){
-                    direccion.inicioManto2(); 
-            } else {
-                mensaje = "Credenciales incorrectas";
+                } else if (usuario.getRol_id() == 4) {
+                    direccion.inicioManto2();
+                } else {
+                    mensaje = "Credenciales incorrectas";
+                }
             }
         }
     }
-}
-    
-    public void cargarUsuarios(){
-        
+
+    public void cargarUsuarios() {
+
         System.out.println("HOLA ESTA ES UNA PRUEBA");
 //        RequestContext.getCurrentInstance().execute("cargarVistaUsuarios()");
-       
+
     }
-    
-    
+
     /**
      * @return the mensaje
      */
@@ -283,7 +271,7 @@ public class inicioController implements Serializable {
     public void setListaUsuarios(List<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
-    
+
     /**
      * @return the id_reporte
      */
@@ -409,7 +397,7 @@ public class inicioController implements Serializable {
     public void setListaReportes(List<Reporte> listaReportes) {
         this.listaReportes = listaReportes;
     }
-    
+
     //agregado manual
     /**
      * @return the listaReportesManto2
@@ -418,7 +406,7 @@ public class inicioController implements Serializable {
     public List<ControlReportes> getListaReportesManto2() {
         return listaReportesManto2;
     }
-    */
+     */
     /**
      * @param listaReportesManto2 the listaReportesManto2 to set
      */
@@ -426,7 +414,7 @@ public class inicioController implements Serializable {
     public void setListaReportesManto2(List<ControlReportes> listaReportesManto2) {
         //this.listaReportesManto2 = listaReportesManto2;
     }
-    */
+     */
     /**
      * @return the listaReportesManto
      */
@@ -434,7 +422,7 @@ public class inicioController implements Serializable {
     public List<ControlReportes> getListaReportesManto() {
         return listaReportesManto;
     }
-*/
+     */
     /**
      * @param listaReportesManto the listaReportesManto to set
      */
@@ -476,6 +464,5 @@ public class inicioController implements Serializable {
             e.printStackTrace();
         }
     }
-    */
+     */
 }
-

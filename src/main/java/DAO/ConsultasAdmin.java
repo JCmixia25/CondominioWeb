@@ -45,7 +45,7 @@ public class ConsultasAdmin {
             }
         } catch (Exception e) {
 
-            System.out.println("Error al consultar anuncios" + query);
+//            System.out.println("Error al consultar anuncios" + query);
 
             System.out.println("Error al consultar anuncios");
 
@@ -85,7 +85,7 @@ public class ConsultasAdmin {
             }
         } catch (Exception e) {
 
-            System.out.println("Error al consultar cuentas" + query);
+//            System.out.println("Error al consultar cuentas" + query);
 
             System.out.println("Error al consultar cuentas");
 
@@ -195,10 +195,10 @@ public class ConsultasAdmin {
                 propiedades.add(datos);
 
             }
-            System.out.println("PROPIEADES: " + query);
+//            System.out.println("PROPIEADES: " + query);
             System.out.println("EXITO");
         } catch (Exception e) {
-            System.out.println("Error al consultar propiedades: " + query);
+            System.out.println("Error al consultar propiedades: ");
         } finally {
             if (con != null) {
                 try {
@@ -209,7 +209,7 @@ public class ConsultasAdmin {
                 }
             }
         }
-        System.out.println("PROPIEADES: " + query);
+//        System.out.println("PROPIEDADES: " + query);
         return propiedades;
     }
 
