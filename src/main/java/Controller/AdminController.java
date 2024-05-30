@@ -5,7 +5,7 @@
 package Controller;
 
 import DAO.ConsultasAdmin;
-import DAO.ConsultasDAO;
+import DAO.ConsultasManto;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 

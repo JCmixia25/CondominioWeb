@@ -235,6 +235,16 @@ public class Direccionamiento implements Serializable {
             Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        
+        public void Anuncios2() {
+
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/manto/Anuncios2.xhtml"); // Reemplaza esta URL con la que desees abrir.
+        } catch (IOException ex) {
+            Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
       
       
 
