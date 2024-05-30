@@ -9,7 +9,7 @@ import Models.ControlReportes;
 import Models.Cuenta;
 import Models.RegistroPropiedad;
 import Models.Usuario;
-import Models.Reporte;
+import Models.ControlReportes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,7 +38,6 @@ public class ConsultasAdmin {
                 datos.setId_anuncio(r.getLong("id_anuncio"));
                 datos.setUsuario_id(r.getLong("usuario_id"));
                 datos.setDescripcion(r.getString("descripcion"));
-//              datos.setImagen(r.getBlob("imagen"));
                 datos.setFecha_publicacion(r.getString("fecha_publicacion"));
                 datos.setFecha_vencimiento(r.getString("fecha_vencimiento"));
                 anuncios.add(datos);

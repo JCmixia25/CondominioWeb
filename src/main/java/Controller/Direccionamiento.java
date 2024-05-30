@@ -15,15 +15,11 @@ import javax.inject.Named;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author CompuFire actionListener="#{bkn_direccion.inicioAdmin}"
- */
 
 @ManagedBean(name = "bkn_direccion")
 public class Direccionamiento implements Serializable {
         
-        private String puerto = "8089";
+        private String puerto = "8080";
 
          public void inicioLogin() {
 
