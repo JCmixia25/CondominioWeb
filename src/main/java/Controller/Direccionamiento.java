@@ -23,7 +23,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "bkn_direccion")
 public class Direccionamiento implements Serializable {
         
-        private String puerto = "8089";
+        private String puerto = "8075";
 
          public void inicioLogin() {
 
@@ -75,6 +75,26 @@ public class Direccionamiento implements Serializable {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/cliente/pasarelapagos.xhtml"); // Reemplaza esta URL con la que desees abrir.
+        } catch (IOException ex) {
+            Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void cuentacliente() {
+
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/cliente/estadocuenta.xhtml"); // Reemplaza esta URL con la que desees abrir.
+        } catch (IOException ex) {
+            Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void reportesclientes() {
+
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/cliente/reportes.xhtml"); // Reemplaza esta URL con la que desees abrir.
         } catch (IOException ex) {
             Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -214,7 +234,7 @@ public class Direccionamiento implements Serializable {
 
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
-            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/mano/Anuncios.xhtml"); // Reemplaza esta URL con la que desees abrir.
+            externalContext.redirect("http://localhost:"+puerto+"/CondominioGT/pages/manto/Anuncios.xhtml"); // Reemplaza esta URL con la que desees abrir.
         } catch (IOException ex) {
             Logger.getLogger(Direccionamiento.class.getName()).log(Level.SEVERE, null, ex);
         }

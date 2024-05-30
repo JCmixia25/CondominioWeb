@@ -4,10 +4,17 @@
  */
 package Controller;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author CompuFire
  */
+@ManagedBean(name = "bkn_cliente")
+
 public class ClienteController {
+    
+    
+    
     
 }
