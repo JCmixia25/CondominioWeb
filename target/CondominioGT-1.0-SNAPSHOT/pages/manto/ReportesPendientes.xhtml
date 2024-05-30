@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Consulta de Usuario</title>
+        <title>Reporte Resueltos</title>
         <style>
             body {
                 margin: 0;
@@ -72,13 +72,15 @@
             .header .profile p {
                 margin: 0;
             }
+
             .content {
                 padding: 20px;
-               
             }
+
             .content h1 {
                 margin-top: 0;
             }
+
             .table-container {
                 background-color: white;
                 padding: 20px;
@@ -129,15 +131,6 @@
             <div class="sidebar">
                 <h2>Prados La Esperanza</h2>
                 <h:form>
-                    <p:menu>
-                        <p:menuitem value="Pagos" actionListener="#{bkn_direccion.controlPagos()}" />
-                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}"/>
-                        <p:menuitem value="Control Propiedades" actionListener="#{bkn_direccion.registroPropiedad()}"/>
-                        <p:menuitem value="Usuarios" actionListener="#{bkn_direccion.controlUsuarios()}"/>
-                        <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioAdmin()}"/>
-                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}"/>
-                        <p:menuitem value="Reservas" actionListener="#{bkn_direccion.pasarelaPagos()}"/>
-                    </p:menu>
                 </h:form>
             </div>
             <div class="main-content">
@@ -159,34 +152,36 @@
                         </div>
                     </div>
                 </div>
-                <div  class="content">
-                    <h1 style="text-align: center">PROPIEDADES</h1>
-                    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="propiedad" value="#{bkn_Admin.listaPropiedades}"
-                                 reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaPropiedades}"
-                                 editable="true">
-                        <p:column headerText="NO" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.id_propiedad}"/>
-                        </p:column>
-                        <p:column headerText="DIRECCION" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.direccion}"/>
-                        </p:column>
-                        <p:column headerText="PRECIO" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.precio}"/>
-                        </p:column>
-                        <p:column headerText="AREA" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.area}"/>
-                        </p:column>
-                        <p:column headerText="DESCRIPCION" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.descripcion}"/>
-                        </p:column>
-                        <p:column headerText="HABITACIONES" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.habitaciones}"/>
-                        </p:column>
-                        <p:column headerText="PRECIO" sortBy="" filterBy="">
-                            <h:outputText value="#{propiedad.precio}"/>
-                        </p:column>
-                    </p:dataTable>  
-                </div>
+
+        <h2 style="text-align: center;">REPORTES PENDIENTES</h2>
+<h:form id="consultaForm">         
+    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="reporte" value="#{bkn_manto.listaReportesFiltrados2}"
+                 reflow="true" styleClass="products-table" selection="#{bkn_manto.listaReportesFiltrados2}"
+                 editable="true">
+        <p:column headerText="ID_REPORTE" sortBy="" filterBy="">       
+            <h:outputText value="#{reporte.id_reporte}"/>
+        </p:column>
+        <p:column headerText="AUTOR ID" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.autor_id}"/>
+        </p:column>
+        <p:column headerText="USUARIO ASIGNADO ID" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.usuario_asignado_id}"/>
+        </p:column>
+        <p:column headerText="DESCRIPCION" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.descripcion}"/>
+        </p:column>
+        <p:column headerText="FECHA CREACION" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.fecha_creacion}"/>
+        </p:column>
+        <p:column headerText="FECHA CIERRE" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.fecha_cierre}"/>
+        </p:column>
+        <p:column headerText="ESTADO" sortBy="" filterBy="">
+            <h:outputText value="#{reporte.estado}"/>
+        </p:column>
+    </p:dataTable>
+</h:form>
+
             </div>
         </div>
     </h:body>
