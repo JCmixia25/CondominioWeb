@@ -7,16 +7,34 @@ package Controller;
 import DAO.ConsultasManto;
 import Models.ControlReportes;
 import Models.ControlReportes;
+import Models.Usuario;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 //import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "bkn_manto")
 
 public class MantoController implements Serializable {
+
+    /**
+     * @return the nombreUsuario
+     */
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    /**
+     * @param nombreUsuario the nombreUsuario to set
+     */
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
 
     /**
      * @return the id_reporte
@@ -209,20 +227,20 @@ public class MantoController implements Serializable {
     private String fecha_creacion;
     private String fecha_cierre;
     private String estado;
-    
-    
-    private List<ControlReportes>listaReportes;
+    //usuario
+    private String nombreUsuario;
+
+    private List<ControlReportes> listaReportes;
     private List<ControlReportes> listaReportesFiltrados;
     private List<ControlReportes> listaReportesFiltrados2;
-    
+
     // Filtro de Usuario Asignado ID de Mantenimiento 
     private List<ControlReportes> listaReportesManto;
     private List<ControlReportes> listaReportesManto2;
-    
-    
-          public void listarReportesFiltrados() {
+
+    public void listarReportesFiltrados() {
         try {
-            if (listaReportes!= null) {
+            if (listaReportes != null) {
                 setListaReportesFiltrados(listaReportes.stream()
                         .filter(reporte -> "resuelto".equalsIgnoreCase(reporte.getEstado()))
                         .collect(Collectors.toList()));
@@ -235,23 +253,23 @@ public class MantoController implements Serializable {
             e.printStackTrace();
         }
     }
-      
-      public void listarReportesFiltrados2() {
-    try {
-        if (listaReportes!= null) {
-            setListaReportesFiltrados2(listaReportes.stream()
-                   .filter(reporte -> "pendiente".equalsIgnoreCase(reporte.getEstado()))
-                   .collect(Collectors.toList()));
-            System.out.println("Reportes filtrados encontrados: " + getListaReportesFiltrados2().size());
-        } else {
-            System.out.println("No hay reportes para filtrar.");
+
+    public void listarReportesFiltrados2() {
+        try {
+            if (listaReportes != null) {
+                setListaReportesFiltrados2(listaReportes.stream()
+                        .filter(reporte -> "pendiente".equalsIgnoreCase(reporte.getEstado()))
+                        .collect(Collectors.toList()));
+                System.out.println("Reportes filtrados encontrados: " + getListaReportesFiltrados2().size());
+            } else {
+                System.out.println("No hay reportes para filtrar.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al filtrar reportes");
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        System.out.println("Error al filtrar reportes");
-        e.printStackTrace();
     }
-}
-       
+
     public void listarReportes() {
 
         ConsultasManto consulta = new ConsultasManto();
@@ -264,14 +282,14 @@ public class MantoController implements Serializable {
         }
 
     }
-    
-     public void listarReportesFiltradosPorUsuarioAsignadoId() {
+
+    public void listarReportesFiltradosPorUsuarioAsignadoId() {
         try {
-            if (getListaReportes()!= null) {
+            if (getListaReportes() != null) {
                 // Filtrar reportes donde usuario_asignado_id es igual a 2
                 setListaReportesManto(getListaReportes().stream()
-                       .filter(reporte -> "2".equals(String.valueOf(reporte.getUsuario_asignado_id())))
-                       .collect(Collectors.toList()));
+                        .filter(reporte -> "2".equals(String.valueOf(reporte.getUsuario_asignado_id())))
+                        .collect(Collectors.toList()));
                 System.out.println("Reportes filtrados encontrados: " + getListaReportesManto().size());
             } else {
                 System.out.println("No hay reportes para filtrar.");
@@ -281,14 +299,14 @@ public class MantoController implements Serializable {
             e.printStackTrace();
         }
     }
-     
-      public void listarReportesFiltradosPorUsuarioAsignadoId2() {
+
+    public void listarReportesFiltradosPorUsuarioAsignadoId2() {
         try {
-            if (getListaReportes()!= null) {
+            if (getListaReportes() != null) {
                 // Filtrar reportes donde usuario_asignado_id es igual a 4
                 setListaReportesManto2(getListaReportes().stream()
-                       .filter(reporte -> "4".equals(String.valueOf(reporte.getUsuario_asignado_id())))
-                       .collect(Collectors.toList()));
+                        .filter(reporte -> "4".equals(String.valueOf(reporte.getUsuario_asignado_id())))
+                        .collect(Collectors.toList()));
                 System.out.println("Reportes filtrados encontrados: " + getListaReportesManto2().size());
             } else {
                 System.out.println("No hay reportes para filtrar.");
@@ -298,16 +316,25 @@ public class MantoController implements Serializable {
             e.printStackTrace();
         }
     }
-      
-       @PostConstruct
-        public void init() {
+
+    @PostConstruct
+    public void init() {
+        obtenerSesion();
         listarReportes();
         listarReportesFiltrados();
         listarReportesFiltrados2();
         listarReportesFiltradosPorUsuarioAsignadoId();
         listarReportesFiltradosPorUsuarioAsignadoId2();
 
+    }
 
-    } 
+    public void obtenerSesion() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+        // Asumiendo que "miObjeto" es el nombre clave bajo el cual guardaste el objeto en la sesión
+        Usuario user = (Usuario) sessionMap.get("sesion");
+        setNombreUsuario(user.getNombre_usuario());
+    }
 }
-
