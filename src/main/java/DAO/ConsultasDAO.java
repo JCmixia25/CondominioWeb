@@ -6,6 +6,7 @@ package DAO;
 
 import Models.Usuario;
 import Models.Reporte;
+import Models.Transaccion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -90,6 +91,20 @@ public class ConsultasDAO {
 
         return Reportes;
     }
-  
+    
+    public void insertarCliente(Transaccion transaccion) {
 
+        try {
+            String query = "INSERT INTO transaccion(cuenta_id, transaccion_id, servicio_id, Monto) VALUES (" + transaccion.getCuenta_id() + "," + transaccion.getTransaccion_id() + "," + transaccion.getServicio_id() + "," + transaccion.getMonto() + ")";
+            //String query="INSERT INTO clientes VALUES ('"+cliente.getNombre()+"','"+cliente.getCorreo()+"','"+cliente.getDireccion()+"','"+cliente.getTelefono()+"')";
+            //String query = "INSERT INTO clientes VALUES (6, 'isai', 'isaimixia18@gmail.com','Santa Luxia', '48407205')";  
+            Statement s = con.conexionMysql().createStatement();
+            s.executeUpdate(query);
+
+            System.out.println("-------------------Datos Insertados--------------------------------");
+
+        } catch (Exception e) {
+            System.out.println("Error al insertar transaccion");
+        }
+    }
 }

@@ -13,6 +13,20 @@ import java.io.Serializable;
 public class Cuenta implements Serializable{
 
     /**
+     * @return the usuario_nombre
+     */
+    public String getUsuario_nombre() {
+        return usuario_nombre;
+    }
+
+    /**
+     * @param usuario_nombre the usuario_nombre to set
+     */
+    public void setUsuario_nombre(String usuario_nombre) {
+        this.usuario_nombre = usuario_nombre;
+    }
+
+    /**
      * @return the id_cuenta
      */
     public Long getId_cuenta() {
@@ -87,15 +101,18 @@ public class Cuenta implements Serializable{
     private String estado;
     private String saldo_pagar;
     private String saldo_deudor;
+    private String usuario_nombre;
 
-    public Cuenta(Long usuario_id, String estado, String saldo_pagar, String saldo_deudor) {
+    public Cuenta(Long usuario_id, String estado, String saldo_pagar, String saldo_deudor, String usuario_nombre) {
         this.usuario_id = usuario_id;
         this.estado = estado;
         this.saldo_pagar = saldo_pagar;
         this.saldo_deudor = saldo_deudor;
+        this.usuario_nombre = usuario_nombre;
     }
 
     public Cuenta() {
+        
     }
     
 }

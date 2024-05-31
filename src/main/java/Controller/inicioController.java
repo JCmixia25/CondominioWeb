@@ -7,12 +7,15 @@ package Controller;
 import DAO.ConsultasDAO;
 import Models.ControlReportes;
 import Models.Usuario;
+
 import Models.Reporte;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 //import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "bkn_inicio")
@@ -111,18 +114,27 @@ public class inicioController implements Serializable {
                 mensaje = "";
 
                 if (usuario.getRol_id() == 1) {
+                    guardarEnSesion(usuario);
                     direccion.inicioAdmin();
                 } else if (usuario.getRol_id() == 2) {
+                    guardarEnSesion(usuario);
                     direccion.inicioManto();
                 } else if (usuario.getRol_id() == 3) {
+                    guardarEnSesion(usuario);
                     direccion.inicioCliente();
-                } else if (usuario.getRol_id() == 4) {
-                    direccion.inicioManto2();
+
                 } else {
                     mensaje = "Credenciales incorrectas";
                 }
             }
         }
+    
+    } 
+
+    public void guardarEnSesion(Usuario usuario) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false); // false para evitar bloqueo
+        session.setAttribute("sesion", usuario);
     }
 
     public void cargarUsuarios() {

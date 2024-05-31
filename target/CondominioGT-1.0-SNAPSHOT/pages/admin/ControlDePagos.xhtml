@@ -122,10 +122,10 @@
                     <p:menu>
                         <p:menuitem value="Pagos" actionListener="#{bkn_direccion.controlPagos()}" />
                         <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}"/>
-                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.registroPropiedad()}"/>
+                        <p:menuitem value="Control Propiedades" actionListener="#{bkn_direccion.registroPropiedad()}"/>
                         <p:menuitem value="Usuarios" actionListener="#{bkn_direccion.controlUsuarios()}"/>
                         <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioAdmin()}"/>
-                        <p:menuitem value="Mensajes" actionListener="#{bkn_direccion.pasarelaPagos()}"/>
+                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}"/>
                         <p:menuitem value="Reservas" actionListener="#{bkn_direccion.pasarelaPagos()}"/>
                     </p:menu>
                 </h:form>
@@ -154,8 +154,11 @@
                     <p:dataTable id="tblDatos" widgetVar="dtProducts" var="cuenta" value="#{bkn_Admin.listaCuentas}"
                                  reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaCuentas}"
                                  editable="true">
+                        <p:column headerText="No. Cuenta" sortBy="" filterBy="">
+                            <h:outputText value="1#{cuenta.id_cuenta}1"/>
+                        </p:column>
                         <p:column headerText="USUARIO" sortBy="" filterBy="">
-                            <h:outputText value="#{cuenta.usuario_id}"/>
+                            <h:outputText value="#{cuenta.usuario_nombre}"/>
                         </p:column>
                         <p:column headerText="ESTADO" sortBy="" filterBy="">
                             <h:outputText value="#{cuenta.estados}"/>

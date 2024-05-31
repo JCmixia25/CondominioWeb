@@ -135,10 +135,10 @@
                     <p:menu>
                         <p:menuitem value="Pagos" actionListener="#{bkn_direccion.controlPagos()}" />
                         <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}"/>
-                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.registroPropiedad()}"/>
+                        <p:menuitem value="Control Propiedades" actionListener="#{bkn_direccion.registroPropiedad()}"/>
                         <p:menuitem value="Usuarios" actionListener="#{bkn_direccion.controlUsuarios()}"/>
                         <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioAdmin()}"/>
-                        <p:menuitem value="Mensajes" actionListener="#{bkn_direccion.pasarelaPagos()}"/>
+                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}"/>
                         <p:menuitem value="Reservas" actionListener="#{bkn_direccion.pasarelaPagos()}"/>
                     </p:menu>
                 </h:form>
@@ -153,7 +153,7 @@
                         <div>
                             <h:form>
                                 <div>
-                                    <h:outputText id="user" value="Josué Mixía" styleClass="nombre-usuario"/>
+                                    <h:outputText id="user" value="#{bkn_Admin.nombreUsuario}" styleClass="nombre-usuario"/>
                                 </div>
                                 <div>
                                     <p:commandButton id="salir" value="Salir" action="#{bkn_direccion.inicioLogin()}" style="margin:5px; background: none; border: none; padding: 1px; color: white; cursor: pointer;"/>

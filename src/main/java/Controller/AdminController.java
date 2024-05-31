@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.ConsultasAdmin;
+import DAO.ConsultasDAO;
 import DAO.ConsultasManto;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +15,7 @@ import Models.ControlReportes;
 import Models.Cuenta;
 import Models.Propiedad;
 import Models.RegistroPropiedad;
+import Models.Usuario;
 import java.util.List;
 import javax.annotation.PostConstruct;
 
@@ -22,6 +24,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Map;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -30,6 +35,23 @@ import java.text.SimpleDateFormat;
 @ManagedBean(name = "bkn_Admin")
 public class AdminController implements Serializable {
 
+    /**
+     * @return the nombreUsuario
+     */
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    /**
+     * @param nombreUsuario the nombreUsuario to set
+     */
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    inicioController acciones = new inicioController();
+    //Usuario
+    private String nombreUsuario;
     //Anuncios
     private List<Anuncio> listaAnuncios;
     //Cuentas
@@ -43,13 +65,25 @@ public class AdminController implements Serializable {
 
     @PostConstruct
     public void init() {
-
+        
+        obtenerSesion();
+        acciones.listarUsuarios();
         listarAnuncios();
         listarCuentas();
         listarReportes();
         listarRegistros();
         listarPropiedades();
+        
+    }
 
+    public void obtenerSesion() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+        // Asumiendo que "miObjeto" es el nombre clave bajo el cual guardaste el objeto en la sesión
+        Usuario user = (Usuario) sessionMap.get("sesion");
+        setNombreUsuario(user.getNombre_usuario());
     }
 
     public void listarAnuncios() {
@@ -61,41 +95,11 @@ public class AdminController implements Serializable {
         } catch (Exception e) {
             System.out.println("Error al listar anuncios");
         }
-        
-        filtrarAnuncios();
-
-    }
-
-    public void filtrarAnuncios() {
-        String fecha_publicacion;
-        String fecha_actual;
-        String formato = "dd-MM-yyyy";
-
-        DateTimeFormatter formateo = DateTimeFormatter.ofPattern(formato);
-
-        for (Anuncio anuncio : listaAnuncios) {
-
-            fecha_publicacion = anuncio.getFecha_publicacion();
-
-            Date fechaActual = new Date();
-            SimpleDateFormat formatear = new SimpleDateFormat(formato);
-            fecha_actual = formatear.format(fechaActual);
-
-            try {
-                LocalDate fechaP = LocalDate.parse(fecha_publicacion, formateo);
-                LocalDate fechaA = LocalDate.parse(fecha_actual, formateo);
-                System.out.println("Las fechas son: "+fechaP+"---"+fechaA);
-            } catch (DateTimeParseException e) {
-                e.printStackTrace();
-            }
-
-//            if (anuncio.getFecha_publicacion()) {
-//
-//            }
-        }
     }
 
     public void listarCuentas() {
+
+        inicioController datos = new inicioController();
 
         ConsultasAdmin consulta = new ConsultasAdmin();
 
@@ -105,6 +109,14 @@ public class AdminController implements Serializable {
             System.out.println("Error al listar cuentas");
         }
 
+        for (Cuenta cuenta : listaCuentas) {
+
+            cuenta.setUsuario_nombre("prueba");
+
+            for (Usuario usuario : acciones.getListaUsuarios()) {
+                cuenta.setUsuario_nombre(usuario.getNombre_usuario());
+            }
+        }
     }
 
     public void listarReportes() {

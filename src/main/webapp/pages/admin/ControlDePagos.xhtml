@@ -154,8 +154,11 @@
                     <p:dataTable id="tblDatos" widgetVar="dtProducts" var="cuenta" value="#{bkn_Admin.listaCuentas}"
                                  reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaCuentas}"
                                  editable="true">
+                        <p:column headerText="No. Cuenta" sortBy="" filterBy="">
+                            <h:outputText value="1#{cuenta.id_cuenta}1"/>
+                        </p:column>
                         <p:column headerText="USUARIO" sortBy="" filterBy="">
-                            <h:outputText value="#{cuenta.usuario_id}"/>
+                            <h:outputText value="#{cuenta.usuario_nombre}"/>
                         </p:column>
                         <p:column headerText="ESTADO" sortBy="" filterBy="">
                             <h:outputText value="#{cuenta.estados}"/>
