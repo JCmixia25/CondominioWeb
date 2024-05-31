@@ -122,6 +122,9 @@ public class inicioController implements Serializable {
                 } else if (usuario.getRol_id() == 3) {
                     guardarEnSesion(usuario);
                     direccion.inicioCliente();
+                }else if (usuario.getRol_id() == 4) {
+                    guardarEnSesion(usuario);
+                    direccion.inicioManto2();
 
                 } else {
                     mensaje = "Credenciales incorrectas";

@@ -138,6 +138,7 @@
                     <div class="logo">
                         <p:graphicImage value="/resources/img/Condominio.png" style="width: 100px; height: 80px;" />
                     </div>
+                    <h2 style="text-align: center;">REPORTES PENDIENTES</h2>
                     <div class="profile">
                         <p:graphicImage value="/resources/img/usuario.png" style="width: 40px; height: 40px;" />
                         <div>
@@ -146,14 +147,14 @@
                                     <h:outputText id="user" value="Josué Mixía" styleClass="nombre-usuario"/>
                                 </div>
                                 <div>
-                                    <p:commandButton id="salir" value="Salir" action="#{bkn_direccion.inicioLogin()}" style="margin:5px; background: none; border: none; padding: 1px; color: white; cursor: pointer;"/>
+                                    <p:commandButton id="salir" value="CERRAR SESION" action="#{bkn_direccion.inicioLogin()}" style="margin:5px; background: none; border: none; padding: 1px; color: white; cursor: pointer;"/>
                                 </div>
                             </h:form>
                         </div>
                     </div>
                 </div>
 
-        <h2 style="text-align: center;">REPORTES PENDIENTES</h2>
+
 <h:form id="consultaForm">         
     <p:dataTable id="tblDatos" widgetVar="dtProducts" var="reporte" value="#{bkn_inicio.listaReportesFiltrados2}"
                  reflow="true" styleClass="products-table" selection="#{bkn_inicio.listaReportesFiltrados2}"
