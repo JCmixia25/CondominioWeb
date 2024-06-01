@@ -87,6 +87,8 @@ public class inicioController implements Serializable {
 
         listarReportes();
     }
+    
+    
 
     public void validarUsuario() throws Exception {
 

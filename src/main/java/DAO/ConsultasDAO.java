@@ -53,7 +53,7 @@ public class ConsultasDAO {
 
         return Usuarios;
     }
-    
+
     //listar reportes
     public List<Reporte> consultarReportes() throws Exception {
         List<Reporte> Reportes = new ArrayList<Reporte>();
@@ -91,11 +91,14 @@ public class ConsultasDAO {
 
         return Reportes;
     }
-    
-    public void insertarCliente(Transaccion transaccion) {
 
+    public void insertarTransaccion(Transaccion transaccion) {
+        
+        System.out.println("INSERTANDO TRANSACCION");
+        String query = "INSERT INTO transaccion(cuenta_id, transaccion_id, servicio_id, Monto) VALUES (" + transaccion.getCuenta_id() + "," + transaccion.getTransaccion_id() + "," + transaccion.getServicio_id() + "," + transaccion.getMonto() + ")";
+        System.out.println("query: "+ query);
         try {
-            String query = "INSERT INTO transaccion(cuenta_id, transaccion_id, servicio_id, Monto) VALUES (" + transaccion.getCuenta_id() + "," + transaccion.getTransaccion_id() + "," + transaccion.getServicio_id() + "," + transaccion.getMonto() + ")";
+            
             //String query="INSERT INTO clientes VALUES ('"+cliente.getNombre()+"','"+cliente.getCorreo()+"','"+cliente.getDireccion()+"','"+cliente.getTelefono()+"')";
             //String query = "INSERT INTO clientes VALUES (6, 'isai', 'isaimixia18@gmail.com','Santa Luxia', '48407205')";  
             Statement s = con.conexionMysql().createStatement();
@@ -107,4 +110,5 @@ public class ConsultasDAO {
             System.out.println("Error al insertar transaccion");
         }
     }
+
 }

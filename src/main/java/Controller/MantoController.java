@@ -19,7 +19,6 @@ import javax.faces.context.FacesContext;
 //import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "bkn_manto")
-
 public class MantoController implements Serializable {
 
     /**
