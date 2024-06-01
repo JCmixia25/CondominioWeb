@@ -65,7 +65,7 @@ public class AdminController implements Serializable {
 
     @PostConstruct
     public void init() {
-        
+
         obtenerSesion();
         acciones.listarUsuarios();
         listarAnuncios();
@@ -73,7 +73,7 @@ public class AdminController implements Serializable {
         listarReportes();
         listarRegistros();
         listarPropiedades();
-        
+
     }
 
     public void obtenerSesion() {
@@ -111,10 +111,14 @@ public class AdminController implements Serializable {
 
         for (Cuenta cuenta : listaCuentas) {
 
-            cuenta.setUsuario_nombre("prueba");
-
+//            cuenta.setUsuario_nombre("prueba");
             for (Usuario usuario : acciones.getListaUsuarios()) {
-                cuenta.setUsuario_nombre(usuario.getNombre_usuario());
+                if (cuenta.getUsuario_id() == usuario.getId_usuario()) {
+                    cuenta.setUsuario_nombre(usuario.getNombre_usuario());
+                    System.out.println("USUARIOS: " + cuenta.getUsuario_id() + "->" + usuario.getId_usuario() + ")" + usuario.getNombre_usuario());
+                }
+//               
+                
             }
         }
     }
@@ -148,7 +152,8 @@ public class AdminController implements Serializable {
 
         try {
             setListaPropiedades(consulta.consultarPropiedades());
-            System.out.println("LISTA PROPIEDADES: " + listaPropiedades.size());
+
+            System.out.println("LISTA PROPIEDADES: ");
         } catch (Exception e) {
             System.out.println("Error al listar propiedades");
         }

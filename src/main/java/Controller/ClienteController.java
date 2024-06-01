@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.ConsultasDAO;
+import Models.Cuenta;
 import Models.Transaccion;
 import Models.Usuario;
 import java.util.Map;
@@ -22,29 +23,49 @@ import javax.faces.context.FacesContext;
 public class ClienteController {
 
     /**
-     * @return the nombreUsuario
+     * @return the monto
      */
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public float getMonto() {
+        return monto;
     }
 
     /**
-     * @param nombreUsuario the nombreUsuario to set
+     * @param monto the monto to set
      */
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
+
+    /**
+     * @return the usuario_id
+     */
+    public Long getUsuario_id() {
+        return usuario_id;
+    }
+
+    /**
+     * @param usuario_id the usuario_id to set
+     */
+    public void setUsuario_id(Long usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    AdminController accion = new AdminController();
 
     private Long cuenta_id;
     private Long transaccion_id;
     private Long servicio_id;
+    private float monto;
     //usuario
     private String nombreUsuario;
+    private Long usuario_id;
+    //Cuenta
 
     @PostConstruct
     public void init() {
 
         obtenerSesion();
+        accion.listarCuentas();
 
     }
 
@@ -56,15 +77,22 @@ public class ClienteController {
         // Asumiendo que "miObjeto" es el nombre clave bajo el cual guardaste el objeto en la sesión
         Usuario user = (Usuario) sessionMap.get("sesion");
         setNombreUsuario(user.getNombre_usuario());
+        setUsuario_id(user.getId_usuario());
     }
 
     public void registrarPago() {
+        //Obtiene datos del usuario que ingreso
+        obtenerSesion();
 
         ConsultasDAO consulta = new ConsultasDAO();
         Transaccion transaccion = new Transaccion();
 
-        transaccion.setCuenta_id(cuenta_id);
-        transaccion.setTransaccion_id(transaccion_id);
+        for (Cuenta cuenta : accion.getListaCuentas()) {
+            if (cuenta.getUsuario_id() == usuario_id) {
+                transaccion.setCuenta_id(cuenta.getId_cuenta());
+                transaccion.setTransaccion_id(transaccion_id);
+            }
+        }
 
         try {
             consulta.insertarCliente(transaccion);
@@ -72,6 +100,20 @@ public class ClienteController {
 
         }
 
+    }
+
+    /**
+     * @return the nombreUsuario
+     */
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    /**
+     * @param nombreUsuario the nombreUsuario to set
+     */
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
 }

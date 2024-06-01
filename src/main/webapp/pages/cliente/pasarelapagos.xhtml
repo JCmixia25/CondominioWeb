@@ -177,10 +177,10 @@
                             </div>
 
                             <!-- Formulario para realizar pagos -->
-                            <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" />
-                            <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" />
+                            <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" value="#{bkn_cliente}" />
+                            <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" value="#{bkn_cliente}"/>
                             <p:inputText id="txtCvv" placeholder="CVV" required="true" label="CVV" style="width: 100%;" />
-                            <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" />
+                            <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" value="#{bkn_cliente}"/>
 
                             <!-- Botón para realizar el pago -->
                             <p:commandButton value="Realizar Pago" style="width: 100%;" action="#{bkn_cliente.registrarPago()}"/>

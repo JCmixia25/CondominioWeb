@@ -188,7 +188,7 @@ public class ConsultasAdmin {
                 datos.setTipo_propiedad(r.getString("tipo_propiedad"));
                 datos.setPrecio(r.getFloat("precio"));
                 datos.setArea(r.getString("area"));
-                datos.setDescripcion("descripcion");
+                datos.setDescripcion(r.getString("descripcion"));
                 datos.setHabitaciones(r.getInt("habitacion"));
                 datos.setBaños(r.getInt("baños"));
                 
